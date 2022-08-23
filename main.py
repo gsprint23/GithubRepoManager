@@ -21,7 +21,7 @@ ACCESS_KEY = os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN") # add as environment vari
 
 if __name__ == "__main__":
     # NOTE: enter organization name here
-    organization_name = "GonzagaCPSC322" 
+    organization_name = "GonzagaCPSC222" 
     # using a Github personal access token
     g = Github(ACCESS_KEY) 
 
@@ -29,17 +29,17 @@ if __name__ == "__main__":
     # get_organization(): https://pygithub.readthedocs.io/en/latest/github_objects/AuthenticatedUser.html?highlight=get_organization#github.AuthenticatedUser.AuthenticatedUser.get_organization_membership
     # get_repos(): # https://pygithub.readthedocs.io/en/latest/github_objects/Organization.html?highlight=get_repos#github.Organization.Organization.get_repos
     for repo in g.get_organization(organization_name).get_repos(type="public", sort="full_name"): # NOTE: can set type="private"
-        # print(repo.name, repo.owner)
+        print(repo.name, repo.owner)
         # NOTE: set repo name filters for what you want to edit/delete here
         # if ("Fun" in repo.name or "Exam" in repo.name) and not repo.name.startswith("F20") and not repo.name.startswith("F21"):
-        if ("U" in repo.name or "PAs" in repo.name) and not repo.name.startswith("S21"):
+        if (repo.name.startswith("U") or repo.name.startswith("PAs") or repo.name.startswith("DAs")): # and not repo.name.startswith("S21"):
             counter += 1 # to make sure this matches Github organization page count for filter "Public" at end of semester
             print("Match#", counter, repo.name) # https://pygithub.readthedocs.io/en/latest/github_objects/Repository.html#repository
 
             # edit capabilities: https://pygithub.readthedocs.io/en/latest/github_objects/Repository.html#github.Repository.Repository.edit
             # NOTE: uncomment this when you've filtered down to the repos you want to edit!!
             # repo.edit(private=True) 
-            # repo.edit(name="S21-" + repo.name) 
+            # repo.edit(name="S22-" + repo.name) 
             # NOTE: same here on uncommenting to delete, but be careful with this one as there is no confirmation of are you sure you want to delete? this is comment is it!!
             # if you get github.GithubException.GithubException: 403 "Must have admin rights to Repository.", you need to set the delete_repository scope on your personal access token
             # repo.delete() # https://pygithub.readthedocs.io/en/latest/github_objects/Repository.html?highlight=repository%20delete#github.Repository.Repository.delete
