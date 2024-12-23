@@ -38,8 +38,7 @@ if __name__ == "__main__":
 
             # edit capabilities: https://pygithub.readthedocs.io/en/latest/github_objects/Repository.html#github.Repository.Repository.edit
             # NOTE: uncomment this when you've filtered down to the repos you want to edit!!
-            # repo.edit(private=True) 
-            # repo.edit(name="S22-" + repo.name) 
+            # repo.edit(name="F22-" + repo.name, private=True) 
             # NOTE: same here on uncommenting to delete, but be careful with this one as there is no confirmation of are you sure you want to delete? this is comment is it!!
             # if you get github.GithubException.GithubException: 403 "Must have admin rights to Repository.", you need to set the delete_repository scope on your personal access token
             # repo.delete() # https://pygithub.readthedocs.io/en/latest/github_objects/Repository.html?highlight=repository%20delete#github.Repository.Repository.delete
